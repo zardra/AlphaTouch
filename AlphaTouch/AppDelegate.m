@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    CGRect viewRect = [[UIScreen mainScreen] bounds];
+    self.window = [[UIWindow alloc] initWithFrame:viewRect];
+    self.viewController = [[ViewController alloc] init];
+    
+    self.window.rootViewController = self.viewController;
+    [self.window makeKeyAndVisible];
+    
+    NSLog(@"Screen is %f tall and %f wide.", viewRect.size.height, viewRect.size.width);
+    
     return YES;
 }
 
